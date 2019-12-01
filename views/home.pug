@@ -1,0 +1,14 @@
+extends layouts/main
+
+include mixins/mainVideo
+
+block content
+    div.home
+        each video in videos
+            +mainVideo({
+                id:video.id,
+                thumbnail:video.fileUrl,
+                title:video.title,
+                views:video.views,
+                timestamp:video.createdAt
+            })

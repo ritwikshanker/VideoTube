@@ -1,0 +1,18 @@
+extends layouts/main
+
+include mixins/mainVideo
+
+block content
+    div.search
+        header.search__header
+            h3 Searching by 
+                span.term=term
+        .search__results
+            each video in videos
+                +mainVideo({
+                    id:video.id,
+                    thumbnail:video.fileUrl,
+                    title:video.title,
+                    views:video.views,
+                    timestamp:video.createdAt
+                })

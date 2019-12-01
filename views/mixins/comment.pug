@@ -1,0 +1,15 @@
+mixin comment(comment = {})
+    li.comment
+        a(href=`/user/${comment.authorId}`)
+            .comment__user(style={'background-image':`url(${comment.authorAvatar})`})
+        .comment__user-data
+            .comment__title
+                a(href=`/user/${comment.authorId}`)
+                    span.comment__username= comment.username
+                span.comment__timestamp= helpers.formatTime(comment.timestamp)
+            p.comment__content= comment.content
+        
+        if String(user._id) === String(comment.authorId)
+            .canDelete(data-id=comment.commentId)
+                span ❌
+        

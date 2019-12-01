@@ -1,0 +1,28 @@
+include ../mixins/flash
+doctype html
+html
+    head
+        title #{title} | #{siteName}
+        link(rel='stylesheet', href='/styles.css')
+        link(rel="stylesheet", href="https://use.fontawesome.com/releases/v5.5.0/css/all.css", integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU", crossorigin="anonymous")
+    body
+        if messages.error
+            +flash({
+                type:'error',
+                text:messages.error
+            })
+        if messages.info
+            +flash({
+                    type:'info',
+                    text:messages.info
+                })
+        if messages.success
+            +flash({
+                type:'success',
+                text:messages.success
+            })
+        include ../partials/header
+        main
+            block content
+        include ../partials/footer
+        script(src="/main.js")

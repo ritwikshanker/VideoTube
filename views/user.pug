@@ -1,0 +1,27 @@
+extends layouts/main
+
+include mixins/mainVideo
+
+block content
+    .user
+        header.user__profile
+            .user__avatar
+                if user.avatarUrl
+                    div.user__avatar-image(style={'background-image':`url(${user.avatarUrl})`})
+                else
+                    div.user__avatar-image
+            h3.user__name= user.name
+            if canEdit
+                a(href=routes.editProfile)
+                    button ✏️ Edit Profile
+                a(href=routes.updatePassword)
+                    button 🔒 Change Password
+        .user__uploaded-videos
+            each video in videos
+                +mainVideo({
+                    id:video.id,
+                    thumbnail:video.fileUrl,
+                    title:video.title,
+                    views:video.views,
+                    timestamp:video.createdAt
+                })

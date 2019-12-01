@@ -1,0 +1,11 @@
+.videoCapture {
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  .videoCapture__player {
+    background-color: $black;
+    margin-bottom: 25px;
+    width: 300px;
+    height: 150px;
+  }
+}

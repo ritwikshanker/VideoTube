@@ -1,0 +1,19 @@
+mixin videoPlayer(video={})
+    .video__container
+        video.video__player(src=video.src, preload="metadata")
+        .video__controls
+            .video__controls-column 
+                .video__volume
+                    input#js-volume-range(type="range", name="volume", min="0",max="1", step="0.1")
+                span.video__control#js-volume
+                    <i class="fas fa-volume-down"></i>
+                span.video__time
+                    span#video__current-time 00:00:00
+                    |  /  
+                    span#video__total-time 
+            .video__controls-column
+                span.video__control#js-play
+                    <i class="fas fa-play"></i>
+            .video__controls-column
+                span.video__control#js-fullscreen
+                    <i class="fas fa-expand"></i>
